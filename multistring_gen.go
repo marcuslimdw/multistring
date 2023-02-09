@@ -85,48 +85,48 @@ func (w Wrap) LastIndexByte(c byte) []int {
 	return result0
 }
 
-func (w Wrap) SplitN(sep string, n int) [][]string {
-	result0 := make([][]string, len(w))
+func (w Wrap) SplitN(sep string, n int) []Wrap {
+	result0 := make([]Wrap, len(w))
 	for i, s := range w {
 		result0[i] = strings.SplitN(s, sep, n)
 	}
 	return result0
 }
 
-func (w Wrap) SplitAfterN(sep string, n int) [][]string {
-	result0 := make([][]string, len(w))
+func (w Wrap) SplitAfterN(sep string, n int) []Wrap {
+	result0 := make([]Wrap, len(w))
 	for i, s := range w {
 		result0[i] = strings.SplitAfterN(s, sep, n)
 	}
 	return result0
 }
 
-func (w Wrap) Split(sep string) [][]string {
-	result0 := make([][]string, len(w))
+func (w Wrap) Split(sep string) []Wrap {
+	result0 := make([]Wrap, len(w))
 	for i, s := range w {
 		result0[i] = strings.Split(s, sep)
 	}
 	return result0
 }
 
-func (w Wrap) SplitAfter(sep string) [][]string {
-	result0 := make([][]string, len(w))
+func (w Wrap) SplitAfter(sep string) []Wrap {
+	result0 := make([]Wrap, len(w))
 	for i, s := range w {
 		result0[i] = strings.SplitAfter(s, sep)
 	}
 	return result0
 }
 
-func (w Wrap) Fields() [][]string {
-	result0 := make([][]string, len(w))
+func (w Wrap) Fields() []Wrap {
+	result0 := make([]Wrap, len(w))
 	for i, s := range w {
 		result0[i] = strings.Fields(s)
 	}
 	return result0
 }
 
-func (w Wrap) FieldsFunc(f func(rune) bool) [][]string {
-	result0 := make([][]string, len(w))
+func (w Wrap) FieldsFunc(f func(rune) bool) []Wrap {
+	result0 := make([]Wrap, len(w))
 	for i, s := range w {
 		result0[i] = strings.FieldsFunc(s, f)
 	}
