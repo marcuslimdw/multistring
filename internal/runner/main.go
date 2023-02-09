@@ -10,7 +10,6 @@ import (
 	"go/token"
 	"io"
 	"os"
-	"reflect"
 
 	"multistring/internal"
 )
@@ -27,28 +26,15 @@ import (
 `
 
 func main() {
-	goroot := os.Getenv("GOROOT")
-	path := fmt.Sprintf("%s/src/strings/strings.go", goroot)
-	file, _ := parser.ParseFile(token.NewFileSet(), path, nil, 0)
-
-	decls := file.Decls
-	for _, decl := range decls {
-		if d, ok := decl.(*ast.FuncDecl); ok && d.Name.Name == "Cut" {
-			init := d.Body.List[0].(*ast.IfStmt).Body.List[0].(*ast.ReturnStmt).Results[0]
-			fmt.Printf("%+v\n", init)
-			fmt.Printf("%+v\n", reflect.TypeOf(init))
-		}
+	if len(os.Args) < 2 {
+		panic("must provide destination path")
 	}
 
-	// if len(os.Args) < 2 {
-	// 	panic("must provide destination path")
-	// }
-	//
-	// bc := generationContext{}
-	// bc.generate(os.Args[1])
-	// if bc.err != nil {
-	// 	panic(bc.err.Error())
-	// }
+	bc := generationContext{}
+	bc.generate(os.Args[1])
+	if bc.err != nil {
+		panic(bc.err.Error())
+	}
 }
 
 type generationContext struct {
