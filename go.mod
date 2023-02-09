@@ -1,4 +1,4 @@
-module multistring
+module github.com/marcuslimdw/multistring
 
 go 1.19
 
